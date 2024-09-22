@@ -416,7 +416,7 @@ const pointToLineDistance = (x1, y1, x2, y2, px, py) => {
         <h3>HTML Preview:</h3>
         <iframe id="htmlPreview" title="HTML Preview" srcDoc={htmlView} className="html-iframe"></iframe>
         <div className="prompt-box">
-  <input
+  <input 
     type="text"
     placeholder="Enter a prompt to modify the code"
     value={prompt}
