@@ -1,38 +1,356 @@
+
 .App {
-  text-align: center;
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f8fb; /* Light blue background */
+  font-family: 'Lato', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Left Section: Full height, split into top and bottom */
+.left-section {
+  width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-right: 2px solid #e0e6eb;
+  border-radius: 12px;
+  margin: 20px;
+  padding: 20px;
+}
+
+/* Top left section: Upload/Whiteboard area */
+.top-left {
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #eaf4fb; /* Very light blue */
+  border: 2px solid #d0e2f2;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+/* Center the title and add spacing */
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.code-header h3{
+  color: #00ff7f;
+}
+
+/* Option buttons aligned below the title */
+.option-selector {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 20px;
+}
+
+.option-selector button {
+  margin: 0 10px;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff; /* Modern blue button */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.option-selector button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Image preview or canvas (whiteboard) */
+.image-upload, .whiteboard-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.image-preview img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #d0e2f2;
+  border-radius: 8px;
+  margin: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.whiteboard-section canvas {
+  border: 2px solid #d0e2f2;
+  background-color: #f4f8fb; /* Light blue canvas background */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Save button */
+.save-button {
+  display: block;
+  margin: 0 auto;
+  padding: 14px 24px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+  outline: none; /* Remove default button outline */
+}
+
+.save-button:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+  transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+.save-button:active {
+  background-color: #004085; /* Even darker shade when active */
+  transform: scale(0.98); /* Slight shrink effect when clicked */
+}
+
+.save-button:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Accessible focus outline */
+}
+
+
+.draw_button{
+  display: block;
+  margin: 0 auto;
+  padding: 14px 24px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+  outline: none; /* Remove default button outline */
+}
+.draw_button:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+  transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+.draw_button:active {
+  background-color: #004085; /* Even darker shade when active */
+  transform: scale(0.98); /* Slight shrink effect when clicked */
+}
+
+.draw_button:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Accessible focus outline */
+}
+
+.upload_button{
+  display: block;
+  margin: 0 auto;
+  padding: 14px 24px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+  outline: none; /* Remove default button outline */
+}
+.upload_button:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+  transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+.upload_button:active {
+  background-color: #004085; /* Even darker shade when active */
+  transform: scale(0.98); /* Slight shrink effect when clicked */
+}
+
+.upload_button:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Accessible focus outline */
+}
+
+.submit_button{
+  display: block;
+  margin: 0 auto;
+  padding: 14px 24px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+  outline: none; /* Remove default button outline */
+}
+.submit_button:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+  transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+.submit_button:active {
+  background-color: #004085; /* Even darker shade when active */
+  transform: scale(0.98); /* Slight shrink effect when clicked */
+}
+
+.submit_button:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Accessible focus outline */
+}
+
+/* Bottom left section: Scrollable code display */
+.bottom-left {
+  height: 20%;
+  padding: 20px;
+  background-color: #1e1e1e; /* Dark background for code display */
+  color: #00ff7f; /* Modern green for code text */
+  border: 2px solid #333;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  font-family: 'Courier New', Courier, monospace; /* Monospace for terminal-like feel */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Right section: Live HTML preview */
+.right-section {
+  width: 50%;
+  padding: 20px;
+  background-color: #fff;
+  border-left: 2px solid #e0e6eb;
+  box-sizing: border-box;
+  height: auto;
+  margin: 20px;
+  margin-bottom: 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.code-view {
+  white-space: pre-wrap;
+  font-size: 14px;
+  color: #00ff7f; /* Green terminal-like text */
+}
+
+.html-iframe {
+  width: 100%;
+  height: 70%;
+  border: none;
+  background-color: #f4f8fb; /* Light blue iframe background */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Bottom left section: Scrollable code display */
+.bottom-left {
+  height: 20%;
+  padding: 20px;
+  background-color: #1e1e1e; /* Dark background for code display */
+  color: #00ff7f; /* Modern green for code text */
+  border: 2px solid #333;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  font-family: 'Courier New', Courier, monospace; /* Monospace for terminal-like feel */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: height 0.3s ease;
+}
+
+/* Maximized code section */
+.bottom-left.expanded {
+  height: 100%;
+}
+
+/* Code view */
+.code-view {
+  white-space: pre-wrap;
+  font-size: 14px;
+  color: #00ff7f; /* Green terminal-like text */
+}
+
+/* Code section header with maximize button */
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.code-header button {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.prompt-box {
+  margin-top: 20px;
+}
+
+.prompt-input {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.prompt-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.prompt-button:disabled {
+  background-color: #6c757d;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.prompt-box {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prompt-box input {
+  width: 70%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.prompt-box button {
+  padding: 8px 16px;
+  margin-left: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.prompt-box button:hover {
+  background-color: #0056b3;
 }
